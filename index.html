@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Minecraft Weltkarte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -5,
+      maxZoom: 2,
+      zoomSnap: 0.1,
+      zoomDelta: 0.2,
+      center: [6656, 11776], // Mitte der Karte (Höhe/2, Breite/2)
+      zoom: 0
+    });
+
+    var bounds = [[0, 0], [13312, 23552]];
+    var image = L.imageOverlay('https://imgur.com/ej9WNJR', bounds).addTo(map);
+    map.fitBounds(bounds);
+  </script>
+</body>
+</html>
